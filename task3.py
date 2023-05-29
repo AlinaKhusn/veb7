@@ -34,10 +34,7 @@ class PublicTransport:
 
     @property
     def info(self):
-            """
-выводит на печать информацию о марке, цвете, годе выпуска и мощности двигателя
-            """
-            print(brand, _engine_power, year, color, max_speed)
+        print(self.brand, self._engine_power, self.year, self.color, self.max_speed)
 
 class Bus(PublicTransport):
     def __init__(self, brand, _engine_power, year, color, max_speed, passengers, __park, _fare):
@@ -48,8 +45,7 @@ class Bus(PublicTransport):
 
     @property
     def park(self):
-        return __park
-
+        return self.__park
 
     @park.setter
     def park(self, park):
