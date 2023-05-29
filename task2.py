@@ -22,8 +22,45 @@
 # 1337*32*9 = 385056
 
 # Здесь пишем код
+class PersonInfo:
 
-# Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
+    def __init__(self, name, age, *subdivision):
+        self.name = name
+        self.age = age
+        self.subdivision = subdivision
+
+
+    def short_name(self):
+        """
+возвращает строку Фамилия И.
+        """
+        new_name = self.name.split()
+        new_name = new_name[1] + ' ' + new_name[0][0] + '.'
+        return new_name
+
+
+    def path_deps(self):
+        new_subdivision = ' --> '.join(self.subdivision)
+        return new_subdivision
+
+#print(PersonInfo('Александр Шленский', 32, 'Разработка', 'УК', 'Автотесты').path_deps())
+
+    def new_salary(self):
+        new_subdivision = ' --> '.join(self.subdivision)
+        letter_dict = {}
+        for elem in range(len(new_subdivision)):
+            if new_subdivision[elem].isalpha():
+                letter_dict[new_subdivision[elem]] = new_subdivision.count(new_subdivision[elem])
+
+        sorted_dict = sorted(letter_dict.items(), key=lambda item: item[1])
+        print(sorted_dict)
+        sorted_dict1 = {k: v for k, v in sorted_dict}
+        valua_list = list(sorted_dict1.values())
+        total = valua_list[-1] + valua_list[-2] + valua_list[-3]
+        salary = 1337 * self.age * total
+        return salary
+
+        # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
 first_person = PersonInfo('Александр Шленский', 32, 'Разработка', 'УК', 'Автотесты')

@@ -24,6 +24,49 @@
 # У класса должно быть СВОЙСТВО how_long, которое вычисляет время прохождения маршрута по формуле max_speed/(4*path)
 
 # Здесь пишем код
+class PublicTransport:
+    def __init__(self, brand, _engine_power, year, color, max_speed):
+        self.brand = brand
+        self._engine_power = _engine_power
+        self.year = year
+        self.color = color
+        self.max_speed = max_speed
+
+    @property
+    def info(self):
+            """
+выводит на печать информацию о марке, цвете, годе выпуска и мощности двигателя
+            """
+            print(brand, _engine_power, year, color, max_speed)
+
+class Bus(PublicTransport):
+    def __init__(self, brand, _engine_power, year, color, max_speed, passengers, __park, _fare):
+        super().__init__(brand, _engine_power, year, color, max_speed)
+        self.passengers = passengers
+        self.__park = __park
+        self._fare = _fare
+
+    @property
+    def park(self):
+        return __park
+
+
+    @park.setter
+    def park(self, park):
+        assert 9999 >= park >= 1000
+        self.__park = park
+
+class Tram(PublicTransport):
+    def __init__(self, brand, _engine_power, year, color, max_speed, __route, path, _fare):
+        super().__init__(brand, _engine_power, year, color, max_speed)
+        self.__route = __route
+        self.path = path
+        self._fare = _fare
+
+    @property
+    def how_long(self):
+        t = self.max_speed/(4 * self.path)
+        return t
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
@@ -32,6 +75,7 @@ first_bus = Bus('ЛиАЗ', 210, 2015, 'Зеленый', 100, 70, 1232, 32)
 second_bus = Bus('VOLGABUS', 320, 2019, 'Желтый', 110, 39, 1111, 32)
 first_tram = Tram('71-931M', 125, 2010, 'Красный', 75, 5, 15, 32)
 second_tram = Tram('71-409-1', 240, 2018, 'Белый', 85, 7, 17, 32)
+
 
 assert isinstance(type(transport).info, property), 'В классе PublicTransport, info - не свойство класса'
 assert transport._engine_power, 'В классе PublicTransport, engine_power не защищенный атрибут'
