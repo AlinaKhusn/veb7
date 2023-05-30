@@ -40,29 +40,24 @@ class PersonInfo:
 
 
     def path_deps(self):
-        """
-возвращает путь "Головное подразделение --> ... --> Конечное подразделение"
-        """
         new_subdivision = ' --> '.join(self.subdivision)
         return new_subdivision
 
 #print(PersonInfo('Александр Шленский', 32, 'Разработка', 'УК', 'Автотесты').path_deps())
 
     def new_salary(self):
-        """
-Вычисляет новую зарплату
-        """
         new_subdivision = ' --> '.join(self.subdivision)
         letter_dict = {}
-        for elem in range(len(new_subdivision)):    #сoздаем и наполняем словарь из букв и количества их схождений
+        for elem in range(len(new_subdivision)):
             if new_subdivision[elem].isalpha():
                 letter_dict[new_subdivision[elem]] = new_subdivision.count(new_subdivision[elem])
 
-        sorted_dict = sorted(letter_dict.items(), key=lambda item: item[1])  #сортируем словарь по значениям
+        sorted_dict = sorted(letter_dict.items(), key=lambda item: item[1])
+        print(sorted_dict)
         sorted_dict1 = {k: v for k, v in sorted_dict}
-        valua_list = list(sorted_dict1.values())  #формируем список из значений словаря
-        total = valua_list[-1] + valua_list[-2] + valua_list[-3]   #суммируем максимальные значения
-        salary = 1337 * self.age * total   #расчет зарплаты по формуле
+        valua_list = list(sorted_dict1.values())
+        total = valua_list[-1] + valua_list[-2] + valua_list[-3]
+        salary = 1337 * self.age * total
         return salary
 
         # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

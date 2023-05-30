@@ -17,18 +17,14 @@ class Segment:
         self.k2 = k2
 
 
+
+
     def length(self):
-        """
-Возвращает длину нашего отрезка, с округлением до 2 знаков после запятой
-        """
         l = ((self.k2[0] - self.k1[0]) ** 2 + (self.k2[1] - self.k1[1]) ** 2) ** 0.5
         return round(l, 2)
 
 
     def x_axis_intersection(self):
-        """
-возвращает True, если отрезок пересекает ось абцисс, иначе False
-        """
         if self.k1[1] * self.k2[1] < 0:
             return True
         else:
@@ -36,9 +32,6 @@ class Segment:
 
 
     def y_axis_intersection(self):
-        """
-возвращает True, если отрезок пересекает ось ординат, иначе False
-        """
         if self.k1[0] * self.k2[0] < 0:
             return True
         else:
