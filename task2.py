@@ -43,20 +43,16 @@ class PersonInfo:
         new_subdivision = ' --> '.join(self.subdivision)
         return new_subdivision
 
-#print(PersonInfo('Александр Шленский', 32, 'Разработка', 'УК', 'Автотесты').path_deps())
-
     def new_salary(self):
         new_subdivision = ' --> '.join(self.subdivision)
         letter_dict = {}
         for elem in range(len(new_subdivision)):
             if new_subdivision[elem].isalpha():
                 letter_dict[new_subdivision[elem]] = new_subdivision.count(new_subdivision[elem])
-
         sorted_dict = sorted(letter_dict.items(), key=lambda item: item[1])
-        print(sorted_dict)
         sorted_dict1 = {k: v for k, v in sorted_dict}
         valua_list = list(sorted_dict1.values())
-        total = valua_list[-1] + valua_list[-2] + valua_list[-3]
+        total = sum(valua_list[-3::])
         salary = 1337 * self.age * total
         return salary
 

@@ -48,7 +48,7 @@ class Bus(PublicTransport):
 
     @property
     def park(self):
-        return __park
+        return self.__park
 
 
     @park.setter
